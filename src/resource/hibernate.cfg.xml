@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <!-- 通常一个sessionfactory代表一个数据库 -->
+    <session-factory>
+        <!-- 数据库方言配置，hibernate在运行的时候，会根据不同的数据库生成符合当前数据库语法的SQL -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!-- 其他相关配置 -->
+        <!-- 显示hibernate在运行时的SQL语句 -->
+        <property name="hibernate.show_sql">true</property>
+        <!-- 格式化sql -->
+        <property name="hibernate.format_sql">true</property>
+        <!-- 自动建表 -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- 加载所有映射文件 -->
+
+        <mapping class="com.fanchaojian.domain.Article" />
+        <mapping class="com.fanchaojian.domain.BlogAdmin" />
+        <mapping class="com.fanchaojian.domain.Essay" />
+        <mapping class="com.fanchaojian.domain.InvokeResult" />
+        <mapping class="com.fanchaojian.domain.Label" />
+        <mapping class="com.fanchaojian.domain.SiteInfo" />
+        <mapping class="com.fanchaojian.domain.User" />
+        <mapping class="com.fanchaojian.domain.Comment" />
+        <mapping class="com.fanchaojian.domain.Reply" />
+    </session-factory>
+</hibernate-configuration>
