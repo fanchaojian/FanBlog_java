@@ -24,6 +24,7 @@ public class Test {
         tx.commit();
         session.close();
 
+        //进行通讯测试
     }
     
 }
