@@ -25,6 +25,7 @@ public class Test {
         session.close();
 
         //进行通讯测试
+        //进行通讯测试2
     }
     
 }
