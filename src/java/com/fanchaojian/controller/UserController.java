@@ -21,48 +21,60 @@ public class UserController {
     @Autowired
     private IUserService userService ;
 
+    /*登录*/      //----blog  已测试
+    @PostMapping("login")
+    public JsonResult login(String name,String email){
+        return ResultUtils.success(userService.login(name,email)) ;
+    }
+
+    /*修改用户基本信息*/
+    @PostMapping("modifyInfo")    //----blogUser
+    public JsonResult modifyInfo(int userID,String email,String icon,String gender,int emailReply){
+        return ResultUtils.success(userService.modifyInfo(userID,email,icon,gender,emailReply)) ;
+    }
+
     /*查找所有用户*/      //----admin
     @GetMapping("getAll")
     public JsonResult getAll() {
         return ResultUtils.success(userService.getAll())  ;
     }
 
-    /*添加用户*/    //----blog
-    @PostMapping("add")
-    public JsonResult addUser(User user){
+    /**
+     *注册或查找用户    //----blog        已测试
+     * 如果是localhost注册将只进行保存操作，如果是第三方登录将执行保存或查找的操作
+     * @param user
+     *          registerMethod  localhost，qq,wechat
+     *          name
+     *          email       允许修改
+     *          openId
+     *          unionId
+     *          icon        允许修改
+     *          gender      允许修改
+     *          emailReply  允许修改
+     * @return
+     */
+    @PostMapping("addOrFind")
+    public JsonResult addOrFind(User user){
         return ResultUtils.success(userService.addUser(user)) ;
     }
 
-    /*通过邮箱查找用户*/    //----blog
-    @GetMapping("email")
-    public JsonResult findByEmail(String email) {
-        return ResultUtils.success(userService.findByEmail(email)) ;
-    }
-
-    /*通过openId查找用户信息，QQ接入用户*/       //----blog
-    @GetMapping("opendID/{opendID}")
-    public JsonResult findByOpendId(@PathVariable String opendID){
-        return ResultUtils.success(userService.findByOpendId(opendID)) ;
-    }
-
-    /*通过unionId查找用户用户信息，wechat接入用户*/        //----blog
-    @GetMapping("unionID/{unionID}")
-    public JsonResult findByUnionId(@PathVariable String unionID) {
-        return ResultUtils.success(userService.findByUnionId(unionID)) ;
-    }
-
     /*通过id查找用户*/        //----blog
-    @GetMapping("id/{id}")
-    public JsonResult findById(@PathVariable int id) {
-        return ResultUtils.success(userService.findById(id)) ;
+    @GetMapping("findById")
+    public JsonResult findById(int userID) {
+        return ResultUtils.success(userService.findById(userID)) ;
     }
 
+    //此功能暂时不启用
     /*删除用户，其实没有真正删除用户，只是将“是否启用字段设置为0”，但是以往的评论依然可见*/     //----admin
-    @PostMapping("delete/{uid}")
-    public JsonResult deleteUser(@PathVariable int uid) {
+    @PostMapping("delete")
+    public JsonResult deleteUser(int uid) {
         userService.deleteUser(uid);
         return ResultUtils.success() ;
      }
 
-    /*通过用户查找回复我的消息*/
+    /*销毁账户并删除与之关联的所有评论与回复*/
+    @PostMapping("drop")    //----admin  已测试
+    public JsonResult dropUser(int userID){
+        return ResultUtils.success(userService.dropUser(userID)) ;
+    }
 }

@@ -19,7 +19,7 @@ public class User implements Serializable {
     private Integer userId ;
     private String registerMethod ; /*注册方式：localhost，qq,wechat。通过不同的登录方式获取不同的用户信息*/
     @Column(columnDefinition = "varchar(100) default ''")
-    private String name ;
+    private String name ;       /*用户名，本地注册时可用*/
     @Column(columnDefinition = "varchar(100) default ''")
     private String email ;
     @Column(columnDefinition = "varchar(100) default ''")

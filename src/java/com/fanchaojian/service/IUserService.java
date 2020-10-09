@@ -9,17 +9,14 @@ import java.util.List;
  * @date 2020-9-25 - 14:45
  */
 public interface IUserService {
+    /*登录*/
+    User login(String name,String email) ;
+
     /*添加用户*/
     User addUser(User user) ;
 
-    /*通过邮箱查找用户*/
-    User findByEmail(String email) ;
-
-    /*通过openId查找用户信息，QQ接入用户*/
-    User findByOpendId(String opendID) ;
-
-    /*通过unionId查找用户用户信息，wechat接入用户*/
-    User findByUnionId(String unionID) ;
+    /*修改用户基本信息*/
+    User modifyInfo(int userID,String email,String icon,String gender,int emailReply) ;
 
     /*通过id查找用户*/
     User findById(int id) ;
@@ -30,5 +27,6 @@ public interface IUserService {
     /*删除用户，其实没有真正删除用户，只是将“是否启用字段设置为0”，但是以往的评论依然可见*/
     void deleteUser(int uid) ;
 
-    /*通过用户查找回复我的消息*/
+    /*移除用户，从数据库真正的移除，并删除其所有的评论和回复，以及所有与用户关联的回复*/
+    Boolean dropUser(int userid) ;
 }

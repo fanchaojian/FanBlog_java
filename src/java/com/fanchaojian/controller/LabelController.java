@@ -23,9 +23,9 @@ public class LabelController {
     @Autowired
     private ILabelService labelService ;
 
-    /*通过名称查找标签*/        //----blog
-    @GetMapping("{labelName}")
-    public JsonResult findByName(@PathVariable String labelName){
+    /*通过名称查找标签*/        //----blog  已测试
+    @GetMapping("/findByName")
+    public JsonResult findByName(String labelName){
         return ResultUtils.success(labelService.findByName(labelName));
     }
 
@@ -35,7 +35,7 @@ public class LabelController {
         return ResultUtils.success(labelService.findAll()) ;
     }
 
-    /*修改标签信息*/      //----admin
+    /*修改标签信息*/      //----admin 已测试
     @PostMapping("update/{labelid}")
     public JsonResult updateLabel(@PathVariable int labelid, String labelName,String remark){
         Label label = new Label();
@@ -46,11 +46,12 @@ public class LabelController {
     }
 
     /*添加标签*/
-    @PostMapping("save")      //----admin
+    @PostMapping("save")      //----admin  已测试
     public JsonResult saveLabel(String labelName,String remark){
         Label label = new Label();
         label.setLabelName(labelName);
         label.setRemark(remark);
+        label.setArticleCount(0);
         label.setCreateDate(new Date());
         return ResultUtils.success(labelService.addLabel(label));
     }

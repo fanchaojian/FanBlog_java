@@ -1,6 +1,7 @@
 package com.fanchaojian.service;
 
 import com.fanchaojian.domain.Comment;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface ICommentService {
 
     /*通过文章id查找所有的评论,以及评论回复*/
     List<Comment> findByArticle(int articleId) ;
+
+    Boolean deleteComment(int commentdID) ;
 }

@@ -61,4 +61,11 @@ public class CommentDaoImpl implements ICommentDao {
         }
 
     }
+
+    @Override
+    public void deleteComment(Comment comment) {
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(comment);
+    }
+
 }

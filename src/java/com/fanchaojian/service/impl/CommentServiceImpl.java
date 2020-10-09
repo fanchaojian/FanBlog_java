@@ -68,4 +68,16 @@ public class CommentServiceImpl implements ICommentService {
     public List<Comment> findByArticle(int articleId) {
         return commentDao.findByArticle(articleId);
     }
+
+    @Override
+    public Boolean deleteComment(int commentdID) {
+        Comment comment = commentDao.findById(commentdID);
+        if(comment != null){
+            commentDao.deleteComment(comment);
+            return true;
+        }else{
+            throw new RuntimeException("没有指定id的评论，删除失败。") ;
+        }
+
+    }
 }

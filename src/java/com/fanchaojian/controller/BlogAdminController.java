@@ -47,7 +47,7 @@ public class BlogAdminController {
             "githubUrl":
      * @return
      */
-    @PostMapping("updateBaseInfo")
+    @PostMapping("Admin/updateBaseInfo")
     public JsonResult updateBlogAdmin(BlogAdmin blogAdmin){
         return ResultUtils.success(blogAdminService.updateBlogAdmin(blogAdmin)) ;
     }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.*;
 import java.util.List;
 
 /**
@@ -48,5 +49,17 @@ public class CommentController {
     @PostMapping("addComment")
     public JsonResult addComment(String type, Integer articleId, int userId, String content) {
         return ResultUtils.success(commentService.addComment(type,articleId,userId,content)) ;
+    }
+
+
+    /**
+     * 删除评论 及其关联的所有回复   //Admin and  user
+     * @param commentID
+     * @return
+     */
+    @PostMapping("deleteComment")
+    public JsonResult deleteComment(int commentID){
+        return ResultUtils.success(commentService.deleteComment(commentID)) ;
+
     }
 }

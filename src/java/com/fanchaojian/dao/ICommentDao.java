@@ -19,4 +19,6 @@ public interface ICommentDao {
     /*通过id查找评论*/
     Comment findById(int commentID) ;
 
+    void deleteComment(Comment comment) ;
+
 }

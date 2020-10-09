@@ -18,7 +18,8 @@ import java.util.Base64;
 
 /**
  * 用于登录拦截的过滤器
- * 需要拦截的路径包含save,delete,update,get
+ * 需要拦截的路径包含save,delete,update,get，drop  此为超级管理员才有的权限
+ *
  * @author fanchaojian
  * @date 2020-9-28 - 17:00
  */
@@ -32,7 +33,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         System.out.println("请求路径："+servletPath) ;
 
         //判断请求路径中是否包含指定的字符串save,delete,update,get
-        if(servletPath.contains("save") || servletPath.contains("delete") || servletPath.contains("update") || servletPath.contains("get")){
+        if(servletPath.contains("save") || servletPath.contains("delete") || servletPath.contains("update") || servletPath.contains("get") || servletPath.contains("drop")){
             System.out.println("匹配到方法") ;
             //获取header里的认证信息
             String result = JSON.toJSONString(ResultUtils.error(101, "登录认证失败"));
@@ -41,11 +42,17 @@ public class LoginInterceptor implements HandlerInterceptor {
                 returnJson(response, result);
                 return false ;
             }
+            String authText = "" ;
             //base64解码
             Base64.Decoder decoder = Base64.getDecoder();
-            String authText = new String(decoder.decode(authorization), "UTF-8");
+            try{
+                authText = new String(decoder.decode(authorization), "UTF-8");
+            }catch(Exception e){
+                returnJson(response, result);
+                return false ;
+            }
+
             if(!authText.matches("^\\w+&{1}\\w+$")){
-                System.out.println("登录认证失败，格式不正确") ;
                 returnJson(response, result);
                 return false ;
             }
@@ -55,15 +62,16 @@ public class LoginInterceptor implements HandlerInterceptor {
             System.out.println("用户名："+username+",密码："+password) ;
             BlogAdmin admin = blogAdminService.login(username, password);
             if(admin != null){
-                System.out.println("登录认证成功") ;
                 return true ;
             }else{
-                System.out.println("登录认证失败，用户名或密码错误"+result) ;
                 returnJson(response, result);
                 return false ;
             }
+        }else if(servletPath.contains("modify")){
+            String userID = request.getParameter("userID");
+            System.out.println("账户id为++++"+userID) ;
+            return true ;
         }else{
-            System.out.println("没有匹配到方法") ;
             return true ;
         }
     }
