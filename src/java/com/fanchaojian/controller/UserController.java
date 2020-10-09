@@ -28,13 +28,13 @@ public class UserController {
     }
 
     /*修改用户基本信息*/
-    @PostMapping("modifyInfo")    //----blogUser
+    @PostMapping("baseUser/modifyInfo")    //----blogUser
     public JsonResult modifyInfo(int userID,String email,String icon,String gender,int emailReply){
         return ResultUtils.success(userService.modifyInfo(userID,email,icon,gender,emailReply)) ;
     }
 
     /*查找所有用户*/      //----admin
-    @GetMapping("getAll")
+    @GetMapping("baseAdmin/getAll")
     public JsonResult getAll() {
         return ResultUtils.success(userService.getAll())  ;
     }
@@ -66,14 +66,14 @@ public class UserController {
 
     //此功能暂时不启用
     /*删除用户，其实没有真正删除用户，只是将“是否启用字段设置为0”，但是以往的评论依然可见*/     //----admin
-    @PostMapping("delete")
+    @PostMapping("baseUser/delete")
     public JsonResult deleteUser(int uid) {
         userService.deleteUser(uid);
         return ResultUtils.success() ;
      }
 
     /*销毁账户并删除与之关联的所有评论与回复*/
-    @PostMapping("drop")    //----admin  已测试
+    @PostMapping("baseAdmin/drop")    //----admin  已测试
     public JsonResult dropUser(int userID){
         return ResultUtils.success(userService.dropUser(userID)) ;
     }

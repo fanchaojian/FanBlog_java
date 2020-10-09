@@ -38,7 +38,7 @@ public class CommentController {
 
 
 
-    /**              //-----blog
+    /**             //Admin and  user
      * 添加评论
      * @param type 评论类型，文章评论：comment,留言：gurstbook
      * @param articleId 文章的id
@@ -46,7 +46,7 @@ public class CommentController {
      * @param content   文章内容
      * @return
      */
-    @PostMapping("addComment")
+    @PostMapping("baseUser/addComment")
     public JsonResult addComment(String type, Integer articleId, int userId, String content) {
         return ResultUtils.success(commentService.addComment(type,articleId,userId,content)) ;
     }
@@ -57,7 +57,7 @@ public class CommentController {
      * @param commentID
      * @return
      */
-    @PostMapping("deleteComment")
+    @PostMapping("baseUser/deleteComment")
     public JsonResult deleteComment(int commentID){
         return ResultUtils.success(commentService.deleteComment(commentID)) ;
 

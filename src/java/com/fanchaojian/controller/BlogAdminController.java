@@ -47,13 +47,13 @@ public class BlogAdminController {
             "githubUrl":
      * @return
      */
-    @PostMapping("Admin/updateBaseInfo")
+    @PostMapping("baseAdmin/updateBaseInfo")
     public JsonResult updateBlogAdmin(BlogAdmin blogAdmin){
         return ResultUtils.success(blogAdminService.updateBlogAdmin(blogAdmin)) ;
     }
 
     /*修改用户名和密码*/    //----admin  已测试
-    @PostMapping("updateLoginInfo")
+    @PostMapping("baseAdmin/updateLoginInfo")
     public JsonResult updateLoginInfo(Integer adminId,String username,String password){
         if(username == null || username.isEmpty() || password == null || password.isEmpty()){
             return ResultUtils.error(101,"用户名或密码不能为空") ;

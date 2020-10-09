@@ -31,7 +31,7 @@ public class EssayController {
     }
 
     /*删除essay*/       //----admin
-    @PostMapping("delete")
+    @PostMapping("baseAdmin/delete")
     public JsonResult deleteEssay(Integer id){
         if(id == null){
             throw new RuntimeException("请指定参数id") ;
@@ -40,7 +40,7 @@ public class EssayController {
     }
 
     /*添加随笔*/        //----admin
-    @PostMapping("save")
+    @PostMapping("baseAdmin/save")
     public JsonResult saveEssay(String content){
         Essay essay = new Essay();
         essay.setContent(content);

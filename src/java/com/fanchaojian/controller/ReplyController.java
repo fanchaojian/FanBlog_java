@@ -34,7 +34,7 @@ public class ReplyController {
      * @param content
      * @return
      */
-    @PostMapping("add")
+    @PostMapping("baseUser/add")
     public JsonResult addReply(int articleID, int commentID, int targetID, int fromUid, int toUid, String replyType, String content){
         return ResultUtils.success(replyService.addReply(articleID,commentID,targetID,fromUid,toUid,replyType,content)) ;
     }

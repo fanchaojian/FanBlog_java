@@ -36,8 +36,8 @@ public class LabelController {
     }
 
     /*修改标签信息*/      //----admin 已测试
-    @PostMapping("update/{labelid}")
-    public JsonResult updateLabel(@PathVariable int labelid, String labelName,String remark){
+    @PostMapping("baseAdmin/update")
+    public JsonResult updateLabel(int labelid, String labelName,String remark){
         Label label = new Label();
         label.setLabelId(labelid);
         label.setLabelName(labelName);
@@ -46,7 +46,7 @@ public class LabelController {
     }
 
     /*添加标签*/
-    @PostMapping("save")      //----admin  已测试
+    @PostMapping("baseAdmin/save")      //----admin  已测试
     public JsonResult saveLabel(String labelName,String remark){
         Label label = new Label();
         label.setLabelName(labelName);

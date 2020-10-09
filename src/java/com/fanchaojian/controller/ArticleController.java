@@ -45,7 +45,7 @@ public class ArticleController {
     }
 
     /*保存博客文章*/      //----admin  已测试
-    @PostMapping("Admin/save")
+    @PostMapping("baseAdmin/save")
     public JsonResult saveArticle(String labelName,String title,String author,String iconUrl,String intro,String content,String reprintSite){
         /*封装article*/
         Article article = new Article(title,author,iconUrl,intro,content,new Date(),reprintSite,0,0,0);
@@ -54,7 +54,7 @@ public class ArticleController {
     }
 
     /*删除文章*/      //----admin  已测试
-    @PostMapping("Admin/delete")
+    @PostMapping("baseAdmin/delete")
     public JsonResult deleteArticle(int articleId){
         System.out.println("文章id"+articleId) ;
         return ResultUtils.success(articleService.deleteArticle(articleId)) ;
@@ -67,7 +67,7 @@ public class ArticleController {
      * @return
      * 必填字段：articleId
      */
-    @PostMapping("Admin/update")
+    @PostMapping("baseAdmin/update")
     public JsonResult updateArticle(Article article){
         return ResultUtils.success(articleService.updateArticle(article)) ;
     }
