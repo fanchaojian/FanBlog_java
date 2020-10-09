@@ -38,7 +38,7 @@ public class CommentController {
 
 
 
-    /**             //Admin and  user
+    /**                         //Admin and  user
      * 添加评论
      * @param type 评论类型，文章评论：comment,留言：gurstbook
      * @param articleId 文章的id
@@ -57,8 +57,8 @@ public class CommentController {
      * @param commentID
      * @return
      */
-    @PostMapping("baseUser/deleteComment")
-    public JsonResult deleteComment(int commentID){
+    @PostMapping("baseSelf/deleteComment")
+    public JsonResult deleteComment(int userID,int commentID){
         return ResultUtils.success(commentService.deleteComment(commentID)) ;
 
     }

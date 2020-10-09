@@ -21,6 +21,12 @@ public interface IUserService {
     /*通过id查找用户*/
     User findById(int id) ;
 
+    /*通过openId查找用户*/
+    User findByOpenId(String openId) ;
+
+    /*通过unionId查找用户*/
+    User findByUnionId(String unionId);
+
     /*查找所有用户*/
     List<User> getAll() ;
 

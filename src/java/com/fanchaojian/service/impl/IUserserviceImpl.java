@@ -104,6 +104,16 @@ public class IUserserviceImpl implements IUserService {
     }
 
     @Override
+    public User findByOpenId(String openId) {
+        return userDao.findByOpendId(openId);
+    }
+
+    @Override
+    public User findByUnionId(String unionId) {
+        return userDao.findByUnionId(unionId);
+    }
+
+    @Override
     public List<User> getAll() {
         return userDao.getAll();
     }

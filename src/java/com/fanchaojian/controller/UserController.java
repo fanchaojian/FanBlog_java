@@ -28,7 +28,7 @@ public class UserController {
     }
 
     /*修改用户基本信息*/
-    @PostMapping("baseUser/modifyInfo")    //----blogUser
+    @PostMapping("baseSelf/modifyInfo")    //----blogUser
     public JsonResult modifyInfo(int userID,String email,String icon,String gender,int emailReply){
         return ResultUtils.success(userService.modifyInfo(userID,email,icon,gender,emailReply)) ;
     }
@@ -59,7 +59,7 @@ public class UserController {
     }
 
     /*通过id查找用户*/        //----blog
-    @GetMapping("findById")
+    @GetMapping("baseSelf/findById")
     public JsonResult findById(int userID) {
         return ResultUtils.success(userService.findById(userID)) ;
     }

@@ -91,19 +91,22 @@ public class MyDemo {
         tx.commit();
         session.close();*/
 
-       /* String auth = "admin&12345" ;
+        String auth = "localhost#fanchaojian&1948556024@qq.com" ;
         Base64.Encoder encoder = Base64.getEncoder() ;
         byte[] textByte = auth.getBytes("UTF-8") ;
         String accessLoginStr = encoder.encodeToString(textByte);
-        System.out.println("编码后的字符串"+accessLoginStr) ;*/
+        System.out.println("编码后的字符串"+accessLoginStr) ;
        
-       /*String str = "admin#sdf09" ;
-       System.out.println(str.matches("/^[A-Za-z0-9]+#{1}[A-Za-z0-9]+$/")) ;*/
-        /*String str = "adminsd&fsj90" ;
-        System.out.println(str.matches("^\\w+&{1}\\w+$")) ;*/
+      /* String str = "admin&1948556024@qq.com" ;
+       System.out.println(str.matches("^\\w+&{1}\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$")) ;*/
 
-        String str = " " ;
-        System.out.println(str.isEmpty()) ;
+
+        /*String str = "adminsd&fsj90" ;
+        System.out.println(str.matches("^\\w+&{1}\\w+$")) ;
+
+        /*String str = " " ;
+        System.out.println(str.isEmpty()) ;*/
+
 
     }
 }
