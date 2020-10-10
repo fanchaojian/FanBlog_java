@@ -4,6 +4,7 @@ import com.fanchaojian.dao.IArticleDao;
 import com.fanchaojian.domain.Article;
 import com.fanchaojian.domain.BlogAdmin;
 import com.fanchaojian.domain.Essay;
+import com.fanchaojian.domain.User;
 import com.fanchaojian.service.IArticleService;
 import com.fanchaojian.service.IBlogAdminService;
 import org.hibernate.Query;
@@ -91,22 +92,41 @@ public class MyDemo {
         tx.commit();
         session.close();*/
 
-        String auth = "localhost#fanchaojian&1948556024@qq.com" ;
+        /*String auth = "localhost#fanchaojian&1948556024@qq.com" ;
         Base64.Encoder encoder = Base64.getEncoder() ;
         byte[] textByte = auth.getBytes("UTF-8") ;
         String accessLoginStr = encoder.encodeToString(textByte);
-        System.out.println("编码后的字符串"+accessLoginStr) ;
+        System.out.println("编码后的字符串"+accessLoginStr) ;*/
+
+        /*String auth = "qq#QQdsfjksdfisfn" ;
+        Base64.Encoder encoder = Base64.getEncoder() ;
+        byte[] textByte = auth.getBytes("UTF-8") ;
+        String accessLoginStr = encoder.encodeToString(textByte);
+        System.out.println("编码后的字符串"+accessLoginStr) ;*/
+
+       /* String auth = "wechat#WECHATsdfskfshiosdj" ;
+        Base64.Encoder encoder = Base64.getEncoder() ;
+        byte[] textByte = auth.getBytes("UTF-8") ;
+        String accessLoginStr = encoder.encodeToString(textByte);
+        System.out.println("编码后的字符串"+accessLoginStr) ;*/
        
       /* String str = "admin&1948556024@qq.com" ;
        System.out.println(str.matches("^\\w+&{1}\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$")) ;*/
 
 
-        /*String str = "adminsd&fsj90" ;
-        System.out.println(str.matches("^\\w+&{1}\\w+$")) ;
+       /* String str = "WECHATsdfskfshiosdj1" ;
+        System.out.println(str.matches("^\\w+$")) ;*/
 
         /*String str = " " ;
         System.out.println(str.isEmpty()) ;*/
 
+        User user1 = new User();
+        user1.setName("fanchaojian");
+
+        User user2 = new User();
+        user2.setName("fanchaojian");
+        
+        System.out.println(user1.hashCode() == user2.hashCode()) ;
 
     }
 }

@@ -62,7 +62,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             }
         }else if(servletPath.contains("baseSelf")){
             BlogAdmin blogAdmin = adminAuthorization(request,response,"BaseAdmin") ;
-            User user = userAuthorization(request,response,"BaseUser") ;
+            User user = userAuthorization(request,response,"BaseSelf") ;
 
             if(blogAdmin != null){
                 return true ;
@@ -70,9 +70,12 @@ public class LoginInterceptor implements HandlerInterceptor {
                 //获取header中的userID参数
                 int userID = Integer.parseInt(request.getParameter("userID")) ;
                 User userById = userService.findById(userID);
-                System.out.print(user.toString()) ;
-                System.out.print(userById.toString()) ;
-                return true ;
+                if(user.getUserId() == userById.getUserId()){
+                    return true ;
+                }else{
+                    returnJson(response, result);
+                    return false ;
+                }
             }else{
                 returnJson(response, result);
                 return false ;
@@ -99,6 +102,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(!authText.matches("^\\w+&{1}\\w+$")){
             return null ;
         }
+
 
         String username = authText.split("&")[0] ;
         String password = authText.split("&")[1] ;
