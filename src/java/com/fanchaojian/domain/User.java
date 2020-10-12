@@ -24,6 +24,7 @@ public class User implements Serializable {
     private String email ;
     @Column(columnDefinition = "varchar(100) default ''")
     private String openId ;   /*第三方QQ登录获取到的唯一标识符*/
+
     @Column(columnDefinition = "varchar(100) default ''")
     private String unionId ;  /*第三方wechat登录获取到的用户唯一标识*/
     @Column(columnDefinition = "varchar(100) default ''")
