@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"><link rel="stylesheet" href="./editor.css" />
+<script type="text/javascript" src="./editor.js"></script>
+<script type="text/javascript" src="./marked.js"></script>
+    <title>Editor</title>
+    <style type="text/css">
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #f9f9f7;
+      }
+      .editor-wrapper {
+        max-width: 680px;
+        padding: 10px;
+        margin: 60px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="editor-wrapper">
+      <textarea id="editor" placeholder="Content here ...."></textarea>
+    </div>
+    <!-- only required for loading sample markdown into the textarea -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.0/zepto.min.js"></script>
+    <script type="text/javascript">
+    (function($) {
+      $('#editor').load('markdown.md',
+        function(data) {
+          var editor = new Editor();
+          editor.render();
+		  
+        }
+      );
+    })(Zepto);
+    </script>
+  </body>
+</html>
